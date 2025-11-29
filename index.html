@@ -1,487 +1,223 @@
-/* ==========================================================================
-   Global look & feel – matches Fin.Creditcard
-   ========================================================================== */
-
-:root {
-  --cc-bg: #020617;             /* slate-950 */
-  --cc-bg-elevated: rgba(15, 23, 42, 0.9);
-  --cc-bg-card: rgba(15, 23, 42, 0.85);
-
-  --cc-text-main: #e5e7eb;      /* slate-200 */
-  --cc-text-muted: #94a3b8;     /* slate-400 */
-  --cc-text-soft: #cbd5f5;
-  --cc-text-subtle: #64748b;
-  --cc-text-heading: #f9fafb;
-
-  --cc-accent: #0ea5e9;         /* sky-500 */
-  --cc-accent-soft: #38bdf8;    /* sky-400 */
-
-  --cc-border-soft: rgba(148, 163, 184, 0.4);
-  --cc-shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.7);
-
-  --cc-radius-sm: 0.5rem;
-  --cc-radius-md: 0.75rem;
-  --cc-radius-lg: 1.25rem;
-
-  --cc-font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-    "Segoe UI", sans-serif;
-  --cc-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
-
-  --cc-container-wide: 72rem;
-  --cc-container-narrow: 60rem;
-}
-
-/* Reset / base */
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: var(--cc-font-sans);
-  background-color: var(--cc-bg);
-  color: var(--cc-text-main);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* Utility-ish classes used in markup */
-
-.bg-slate-950 {
-  background-color: #020617;
-}
-.text-slate-100 {
-  color: #f1f5f9;
-}
-
-.max-w-6xl {
-  max-width: var(--cc-container-wide);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.max-w-5xl {
-  max-width: 64rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* ==========================================================================
-   Header – sticky, frosted, same vibe as Fin.Creditcard
-   ========================================================================== */
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: rgba(2, 6, 23, 0.94);
-  border-bottom: 1px solid rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(16px);
-}
-
-.nav-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
-/* Brand left side */
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.cc-logo {
-  height: 2rem;
-  width: 2rem;
-  border-radius: 999px;
-  background: rgba(14, 165, 233, 0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-  font-weight: 800;
-  color: #020617;
-}
-
-.brand-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
-}
-
-.brand-title {
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.brand-subtitle {
-  font-size: 0.65rem;
-  color: var(--cc-text-subtle);
-}
-
-/* Nav links (right side) */
-
-.nav-links {
-  display: flex;
-  gap: 1.25rem;
-  font-size: 0.85rem;
-}
-
-.nav-links a {
-  color: #cbd5f5;
-  text-decoration: none;
-  transition: color 140ms ease, opacity 140ms ease;
-}
-
-.nav-links a:hover {
-  color: #ffffff;
-}
-
-/* ==========================================================================
-   Page wrapper – content pages
-   ========================================================================== */
-
-.cc-page {
-  max-width: var(--cc-container-narrow);
-  margin: 0 auto;
-  padding: 2.5rem 1.5rem 4rem;
-}
-
-@media (min-width: 768px) {
-  .cc-page {
-    padding: 3rem 2rem 4.5rem;
-  }
-}
-
-/* Breadcrumb line */
-
-.cc-breadcrumb {
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #7dd3fc;
-  border-bottom: 1px solid rgba(56, 189, 248, 0.75);
-  padding-bottom: 0.35rem;
-  margin-bottom: 1.75rem;
-}
-
-/* Hero */
-
-.hero h1 {
-  font-size: 2.4rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: var(--cc-text-heading);
-  margin: 0 0 0.75rem;
-}
-
-@media (min-width: 768px) {
-  .hero h1 {
-    font-size: 2.8rem;
-  }
-}
-
-.hero-lead {
-  margin: 0 0 1.5rem;
-  color: var(--cc-text-soft);
-  max-width: 40rem;
-}
-
-/* CTA button */
-
-.cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9rem;
-  font-weight: 600;
-  padding: 0.6rem 1.3rem;
-  border-radius: var(--cc-radius-md);
-  background: var(--cc-accent);
-  color: #020617;              /* tydelig tekst på lys blå bakgrunn */
-  text-decoration: none;       /* ingen underline på knappen */
-  box-shadow: 0 16px 35px rgba(8, 47, 73, 0.75);
-  transition: background-color 160ms ease, transform 160ms ease,
-    box-shadow 160ms ease;
-}
-
-.cta:hover {
-  background: var(--cc-accent-soft);
-  transform: translateY(-1px);
-  box-shadow: 0 22px 45px rgba(8, 47, 73, 0.9);
-}
-
-/* Sections */
-
-.section {
-  margin-top: 2.5rem;
-}
-
-.section h2 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin: 0 0 0.5rem;
-  color: var(--cc-text-heading);
-}
-
-/* Text styles */
-
-.small {
-  font-size: 0.9rem;
-  color: var(--cc-text-muted);
-  max-width: 44rem;
-}
-
-.cc-page p {
-  margin: 0 0 0.75rem;
-}
-
-/* Vanlige lenker inne på siden (ikke CTA-knappen) */
-.cc-page a:not(.cta) {
-  color: var(--cc-accent-soft);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.cc-page a:not(.cta):hover {
-  color: #e0f2fe;
-}
-
-/* Lists */
-
-.list {
-  margin: 0.25rem 0 1.1rem;
-  padding-left: 1.35rem;
-}
-
-.list li {
-  margin-bottom: 0.35rem;
-  color: var(--cc-text-soft);
-}
-
-/* Tables (SCA factors) */
-
-.table-wrap {
-  margin-top: 1.25rem;
-  margin-bottom: 1rem;
-  overflow-x: auto;
-}
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem;
-  background: var(--cc-bg-elevated);
-  border-radius: var(--cc-radius-lg);
-  overflow: hidden;
-  box-shadow: var(--cc-shadow-soft);
-}
-
-.table th,
-.table td {
-  padding: 0.7rem 0.9rem;
-  border: 1px solid var(--cc-border-soft);
-  text-align: left;
-}
-
-.table th {
-  background: #020617;
-  color: var(--cc-text-soft);
-  font-weight: 600;
-}
-
-.table tbody tr:nth-child(even) {
-  background: rgba(15, 23, 42, 0.9);
-}
-
-.table tbody tr:nth-child(odd) {
-  background: rgba(15, 23, 42, 0.75);
-}
-
-/* Identity cluster cards */
-
-.cluster-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-@media (min-width: 640px) {
-  .cluster-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-.cluster-card {
-  display: block;
-  background: var(--cc-bg-card);
-  border-radius: var(--cc-radius-md);
-  border: 1px solid var(--cc-border-soft);
-  padding: 1rem;
-  text-decoration: none;
-  box-shadow: 0 16px 35px rgba(15, 23, 42, 0.7);
-  transition: border-color 140ms ease, transform 140ms ease,
-    box-shadow 140ms ease, background-color 140ms ease;
-}
-
-.cluster-card h3 {
-  margin: 0 0 0.35rem;
-  font-size: 1rem;
-  color: var(--cc-text-heading);
-}
-
-.cluster-card p {
-  margin: 0;
-}
-
-.cluster-card:hover {
-  border-color: var(--cc-accent-soft);
-  background: rgba(15, 23, 42, 0.98);
-  transform: translateY(-1px);
-  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.9);
-}
-
-/* ==========================================================================
-   Full footer (for større sider som fin.creditcard – kan gjenbrukes)
-   ========================================================================== */
-
-.site-footer {
-  margin-top: 3rem;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  background: radial-gradient(circle at top, #0d1330 0, #060818 50%, #020617 100%);
-  border-top: 1px solid rgba(148, 163, 184, 0.45);
-  color: var(--cc-text-main);
-}
-
-.footer-inner {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-@media (min-width: 640px) {
-  .footer-inner {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-}
-
-.footer-cols {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-@media (min-width: 768px) {
-  .footer-cols {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-}
-
-.footer-col {
-  flex: 1;
-}
-
-.site-footer h2 {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin: 0;
-  color: #e5e7eb;
-}
-
-.site-footer p {
-  margin: 0.75rem 0 0;
-  font-size: 0.9rem;
-  color: var(--cc-text-soft);
-}
-
-.footer-note {
-  font-size: 0.8rem;
-  color: var(--cc-text-subtle);
-  margin-top: 0.35rem;
-}
-
-.footer-links {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.4rem 1.25rem;
-  margin-top: 0.75rem;
-}
-
-.footer-links a {
-  font-size: 0.85rem;
-  color: #cbd5f5;
-  text-decoration: none;
-}
-
-.footer-links a:hover {
-  text-decoration: underline;
-}
-
-.footer-bottom {
-  border-top: 1px solid rgba(148, 163, 184, 0.4);
-  margin-top: 2.25rem;
-  padding-top: 0.9rem;
-  text-align: center;
-}
-
-.footer-bottom p {
-  margin: 0;
-  font-size: 0.8rem;
-  color: var(--cc-text-subtle);
-}
-
-/* ==========================================================================
-   Mini Footer – for small cluster/utility pages
-   ========================================================================== */
-
-.mini-footer {
-  margin-top: 3rem;
-  padding: 2.5rem 1rem;
-  text-align: center;
-  border-top: 1px solid rgba(148, 163, 184, 0.35);
-  background: radial-gradient(circle at top, #0d1330 0, #060818 50%, #020617 100%);
-}
-
-.mini-footer-main {
-  margin: 0;
-  font-size: 0.85rem;
-  color: var(--cc-text-soft);
-}
-
-.mini-footer-contact {
-  margin: 0.5rem 0 0;
-  font-size: 0.85rem;
-  color: var(--cc-text-soft);
-}
-
-.mini-footer-contact a {
-  color: #7dd3fc;              /* lys, tydelig e-postfarge */
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.mini-footer-contact a:hover {
-  text-decoration: underline;
-  color: #c8f1ff;               /* enda lysere på hover */
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Start.Creditcard – Your Starting Point for Understanding Credit Cards</title>
+  <meta name="description" content="A simple, structured introduction to credit cards: how they work, common features, fees and what to review before choosing your first or next card." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://start.creditcard/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Start.Creditcard – Credit Cards Explained Simply" />
+  <meta property="og:description" content="A beginner-friendly guide to the fundamentals of credit cards: limits, APR, rewards, protections and smart usage habits." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://start.creditcard/" />
+  <meta property="og:image" content="https://choose.creditcard/preview.png?utm_source=start.creditcard&utm_medium=referral&utm_campaign=og_image" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Start.Creditcard – Credit Card Basics" />
+  <meta name="twitter:description" content="A simple, clear explanation of how credit cards work and what to check before applying." />
+  <meta name="twitter:image" content="https://choose.creditcard/preview.png?utm_source=start.creditcard&utm_medium=referral&utm_campaign=twitter_image" />
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-64FE63JQ3H"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-64FE63JQ3H');
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body class="bg-slate-950 text-slate-100">
+<header class="site-header">
+  <div class="nav-inner max-w-6xl">
+    <div class="brand">
+      <div class="cc-logo">CC</div>
+      <div class="brand-text">
+        <div class="brand-title">Start.Creditcard</div>
+        <div class="brand-subtitle">Your Starting Point for Credit Cards</div>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="#basics">The Basics</a>
+      <a href="#compare">Compare</a>
+    </nav>
+  </div>
+</header>
+
+<main class="cc-page">
+
+  <!-- Breadcrumb -->
+  <div class="cc-breadcrumb">
+    <a href="https://choose.creditcard/?utm_source=start.creditcard&utm_medium=referral&utm_campaign=breadcrumb">Home</a>
+    &nbsp;›&nbsp;
+    Start.Creditcard
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>A Simple Guide to How Credit Cards Really Work</h1>
+      <p class="hero-lead">
+        If you’re new to credit cards or want a clearer understanding before choosing one, this page gives you the fundamentals — how cards operate, the features that matter, and what to look for as you get started.
+      </p>
+      <a class="cta" href="https://choose.creditcard/?utm_source=start.creditcard&utm_medium=referral&utm_campaign=hero_cta">
+        Visit Choose.Creditcard
+      </a>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section id="overview" class="section">
+    <h2>What Is a Credit Card?</h2>
+    <p>A credit card lets you borrow money up to a set limit for everyday purchases. You can pay the balance in full each month or carry part of it forward and pay interest. Different cards offer different perks, fees and rules.</p>
+    <p>This page provides a clean, beginner-friendly introduction so you understand core concepts before comparing specific card offers.</p>
+  </section>
+
+  <!-- Basics -->
+  <section id="basics" class="section">
+    <h2>The Key Concepts You Need to Know</h2>
+    <p>All credit cards follow the same basic structure, but how they behave depends on your usage and the issuer’s policies. These are the building blocks that make everything else make sense.</p>
+    <ul class="list">
+      <li><strong>Credit limit:</strong> The maximum amount you can borrow at once.</li>
+      <li><strong>Statement balance:</strong> The amount you owe at the end of each billing cycle.</li>
+      <li><strong>Minimum payment:</strong> The smallest amount required to keep the account in good standing.</li>
+      <li><strong>APR:</strong> The interest rate applied if you carry a balance.</li>
+      <li><strong>Fees:</strong> May include annual fees, FX fees, cash-advance fees or late-payment fees.</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>Rewards and Benefits — Optional, Not Guaranteed</h2>
+    <p>Some cards offer cashback, points or miles. Others focus on low fees or credit-building. None of these features matter if the basics aren’t used well — paying on time and keeping balances low matter far more to your financial health.</p>
+    <p>Choosing the right type depends on your habits. Frequent travellers may benefit from travel cards, while casual spenders often prefer simple cashback options.</p>
+  </section>
+
+  <section class="section">
+    <h2>Smart Habits When Starting Out</h2>
+    <p>When you first begin using credit, a few simple habits prevent costly mistakes. Paying your statement balance in full, keeping utilisation under 30% and avoiding unnecessary applications help strengthen your financial profile early.</p>
+    <p>Responsible use now sets the foundation for higher limits, better cards and lower borrowing costs later.</p>
+  </section>
+
+  <!-- Comparison -->
+  <section id="compare" class="section">
+    <h2>How to Compare Cards When You’re New</h2>
+    <div class="table-wrap">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>What to Look For</th>
+            <th>Why It Matters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Fees</td>
+            <td>Annual fee, FX fee, penalty fees</td>
+            <td>Low-fee cards are usually best when you're starting out.</td>
+          </tr>
+          <tr>
+            <td>APR</td>
+            <td>Purchase APR and cash-advance APR</td>
+            <td>If you ever carry a balance, APR determines your cost.</td>
+          </tr>
+          <tr>
+            <td>Credit Requirements</td>
+            <td>Approval difficulty and score requirements</td>
+            <td>Beginner cards usually have simpler requirements.</td>
+          </tr>
+          <tr>
+            <td>Rewards</td>
+            <td>Simple cashback or basic earn structures</td>
+            <td>Easier to use and understand when you’re new.</td>
+          </tr>
+          <tr>
+            <td>Protection Features</td>
+            <td>Purchase protection and dispute rights</td>
+            <td>Helpful if you're still developing good financial habits.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small">
+      Explore the full comparison hub at
+      <a href="https://choose.creditcard/?utm_source=start.creditcard&utm_medium=referral&utm_campaign=comparison_section">
+        Choose.Creditcard
+      </a>.
+    </p>
+  </section>
+
+  <!-- Cluster Links -->
+  <section class="section">
+    <h2>Explore Related Beginner-Friendly Microsites</h2>
+    <div class="cluster-grid">
+      <a class="cluster-card" href="https://creditbuilder.creditcard/?utm_source=start.creditcard&utm_medium=referral&utm_campaign=cluster_creditbuilder">
+        <h3>CreditBuilder.Creditcard</h3>
+        <p>How starter cards help you build credit from scratch.</p>
+      </a>
+      <a class="cluster-card" href="https://studentcard.creditcard/?utm_source=start.creditcard&utm_medium=referral&utm_campaign=cluster_studentcard">
+        <h3>StudentCard.Creditcard</h3>
+        <p>Cards designed for students with limited credit history.</p>
+      </a>
+      <a class="cluster-card" href="https://poorcreditcard.creditcard/?utm_source=start.creditcard&utm_medium=referral&utm_campaign=cluster_poorcreditcard">
+        <h3>PoorCreditCard.Creditcard</h3>
+        <p>Options for early recovery after missed payments or low scores.</p>
+      </a>
+      <a class="cluster-card" href="https://limits.creditcard/?utm_source=start.creditcard&utm_medium=referral&utm_campaign=cluster_limits">
+        <h3>Limits.Creditcard</h3>
+        <p>Understanding the role of credit limits and utilisation.</p>
+      </a>
+      <a class="cluster-card" href="https://guides.creditcard/?utm_source=start.creditcard&utm_medium=referral&utm_campaign=cluster_guides">
+        <h3>Guides.Creditcard</h3>
+        <p>Clear guides that explain every part of credit-card mechanics.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Collection -->
+  <section class="section">
+    <h2>Part of The CreditCard Collection</h2>
+    <p class="small">
+      Start.Creditcard is part of <strong>The CreditCard Collection</strong> — a network of educational minisites by ronarn AS. Each page focuses on one concept so you can understand credit cards step by step.
+    </p>
+    <p class="small">
+      This content is educational only — always check official issuer terms before applying for any product.
+    </p>
+
+    <!-- REQUIRED HUB SNIPPET — ROOT -->
+    <div class="hub-link">
+      <a href="https://choose.creditcard/?utm_source=start.creditcard&utm_medium=referral&utm_campaign=minisite_to_hub"
+         class="text-sm text-slate-600 hover:text-slate-900">
+        Learn more at Choose.Creditcard
+      </a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <h2>Ready to Begin Comparing Credit Cards?</h2>
+    <p class="small">
+      Use Start.Creditcard to learn the basics — then visit the main hub to compare real cards, features and requirements.
+    </p>
+    <a class="cta" href="https://choose.creditcard/?utm_source=start.creditcard&utm_medium=referral&utm_campaign=bottom_cta">
+      Go to Choose.Creditcard
+    </a>
+  </section>
+
+</main>
+
+<footer class="mini-footer">
+  <p class="mini-footer-main">© 2025 The CreditCard Collection — ronarn AS</p>
+  <p class="mini-footer-contact"><a href="mailto:support@cc.creditcard">support@cc.creditcard</a></p>
+</footer>
+</body>
+</html>
